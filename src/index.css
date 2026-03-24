@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-maroon: #6b0b23;
+  --color-maroon-dark: #4a0718;
+  --color-maroon-light: #8a1b3a;
+  --color-cream: #dec78e;
+  --color-cream-dark: #cbb47e;
+  --color-cream-light: #e8d8b4;
+  --font-serif: "Fraunces", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-maroon);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-maroon);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-maroon-light);
+}
+
+/* Oval Utility */
+.oval {
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 0.5px solid rgba(107, 11, 35, 0.3);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1.5rem 3rem;
+  aspect-ratio: 2 / 1;
+}
+
+.oval:hover {
+  background-color: var(--color-maroon);
+  color: var(--color-cream);
+}
+
+/* Cinematic Utilities */
+.bg-grain {
+  position: relative;
+}
+
+.bg-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  /* Subtle grain */
+  z-index: 1;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 30%, rgba(107, 11, 35, 0.15) 100%);
+  z-index: 2;
+}
+
+.ambient-light {
+  background: radial-gradient(circle at 75% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+}
+
+.text-maroon-refined {
+  color: var(--color-maroon);
+  text-shadow: 0 2px 40px rgba(107, 11, 35, 0.1);
+}
+
+/* Typography refinements */
+h1 {
+  font-weight: 200;
+  letter-spacing: -0.05em;
+}
+
+/* Typography styles */
+.text-maroon-gradient {
+  background: linear-gradient(to right, #6b0b23, #4a0718);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 🔥 EDGE BLENDING (GAME CHANGER) */
+.hero-image {
+  mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+}
