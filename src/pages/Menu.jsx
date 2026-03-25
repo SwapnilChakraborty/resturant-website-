@@ -46,14 +46,14 @@ const MenuPage = () => {
                 <h4 className="text-2xl font-serif">Aged Wagyu Biryani</h4>
                 <p className="text-maroon/60">Truffle-infused basmati, saffron, aged beef</p>
               </div>
-              <span className="text-2xl font-serif">$48</span>
+              <span className="text-2xl font-serif">₹3,950</span>
             </div>
             <div className="flex justify-between items-end border-b border-maroon/10 pb-4">
               <div>
                 <h4 className="text-2xl font-serif">Wild Sea Bass</h4>
                 <p className="text-maroon/60">Copper-roasted with Kerala spices</p>
               </div>
-              <span className="text-2xl font-serif">$36</span>
+              <span className="text-2xl font-serif">₹2,850</span>
             </div>
           </div>
         </div>

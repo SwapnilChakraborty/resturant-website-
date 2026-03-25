@@ -11,10 +11,14 @@ const Highlights = () => {
         viewport={{ once: true }}
         className="w-full h-full"
       >
-        <img
+        <motion.img
           src="/masala_highlights.png"
           alt="Bistro Highlights"
-          className="w-full h-full object-cover grayscale brightness-50 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
+          initial={{ filter: 'grayscale(100%) brightness(50%)' }}
+          whileInView={{ filter: 'grayscale(0%) brightness(100%)' }}
+          viewport={{ amount: 0.6 }}
+          transition={{ duration: 0.8 }}
+          className="w-full h-full object-cover transition-all duration-1000"
         />
       </motion.div>
     </section>

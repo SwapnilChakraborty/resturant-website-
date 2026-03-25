@@ -44,10 +44,14 @@ const Menu = () => {
               viewport={{ once: true }}
               className="group relative h-[600px] md:h-[800px] overflow-hidden cursor-pointer"
             >
-              <img
+              <motion.img
                 src={category.image}
                 alt={category.name}
-                className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 group-hover:scale-105"
+                initial={{ filter: 'grayscale(100%) brightness(50%)' }}
+                whileInView={{ filter: 'grayscale(0%) brightness(100%)' }}
+                viewport={{ amount: 0.6 }}
+                transition={{ duration: 0.8 }}
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
               <div className="absolute inset-0 flex items-center justify-center p-4">
                 <div className="oval px-10 py-16 text-cream text-2xl md:text-3xl font-serif tracking-widest backdrop-blur-sm bg-black/5 border-[0.5px] border-cream/30 transition-all duration-700 group-hover:bg-maroon group-hover:border-maroon group-hover:scale-110">

@@ -75,7 +75,13 @@ const Contact = () => {
             className="relative"
           >
              <div className="absolute -inset-4 border border-gold/10 rounded-sm pointer-events-none" />
-             <div className="h-[450px] md:h-[550px] rounded-sm overflow-hidden border border-gold/20 grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl relative z-10 group">
+             <motion.div 
+               initial={{ filter: 'grayscale(100%)' }}
+               whileInView={{ filter: 'grayscale(0%)' }}
+               viewport={{ amount: 0.6 }}
+               transition={{ duration: 1 }}
+               className="h-[450px] md:h-[550px] rounded-sm overflow-hidden border border-gold/20 transition-all duration-1000 shadow-2xl relative z-10 group"
+             >
                 <iframe 
                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.90822699222!2d-0.14663308422969968!3d51.51486377963618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487605335967f13b%3A0xe9f00a5d4d39c9f4!2sMayfair%2C%20London!5e0!3m2!1sen!2suk!4v1625565000000!5m2!1sen!2suk"
                    width="100%" 
@@ -87,7 +93,7 @@ const Contact = () => {
                    className="relative z-10"
                 />
                 <div className="absolute inset-0 bg-gold/5 pointer-events-none group-hover:opacity-0 transition-opacity duration-1000" />
-             </div>
+             </motion.div>
           </motion.div>
         </div>
       </div>

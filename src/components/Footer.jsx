@@ -45,10 +45,14 @@ const Footer = () => {
 
         {/* Right: Grid */}
         <div className="w-full md:w-1/2 relative min-h-[500px] md:min-h-auto overflow-hidden">
-          <img
+          <motion.img
             src="/footer_grid.png"
             alt="Masala Bistro Dishes"
-            className="w-full h-full object-cover grayscale brightness-40 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
+            initial={{ filter: 'grayscale(100%) brightness(40%)' }}
+            whileInView={{ filter: 'grayscale(0%) brightness(100%)' }}
+            viewport={{ amount: 0.6 }}
+            transition={{ duration: 0.8 }}
+            className="w-full h-full object-cover transition-all duration-1000"
           />
         </div>
       </div>

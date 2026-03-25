@@ -22,10 +22,14 @@ const News = () => {
       <div className="flex flex-col md:flex-row min-h-[700px] md:min-h-screen">
         {/* Left: Large Image */}
         <div className="w-full md:w-1/2 relative overflow-hidden h-[500px] md:h-auto">
-          <img
+          <motion.img
             src="/news_food.png"
             alt="Delicious News"
-            className="w-full h-full object-cover grayscale brightness-50 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
+            initial={{ filter: 'grayscale(100%) brightness(50%)' }}
+            whileInView={{ filter: 'grayscale(0%) brightness(100%)' }}
+            viewport={{ amount: 0.6 }}
+            transition={{ duration: 0.8 }}
+            className="w-full h-full object-cover transition-all duration-1000"
           />
         </div>
 
