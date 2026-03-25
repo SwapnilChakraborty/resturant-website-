@@ -25,6 +25,7 @@ const Navbar = () => {
   ];
 
   return (
+    <>
     <nav className={`fixed w-full z-50 transition-all duration-700 ${scrolled || location.pathname !== '/' ? 'bg-cream/95 backdrop-blur-md py-4 shadow-sm' : 'bg-transparent py-10'}`}>
       <div className="max-w-[1720px] mx-auto px-8 md:px-24 flex justify-between items-center">
         <Link to="/">
@@ -64,37 +65,61 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            className="fixed inset-0 bg-cream z-[60] flex flex-col items-center justify-center gap-12"
-          >
-            <button className="absolute top-10 right-8 text-maroon" onClick={() => setIsOpen(false)}>
-              <X size={40} />
-            </button>
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                to={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-4xl uppercase tracking-widest font-serif font-black text-maroon"
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Link to="/contact" onClick={() => setIsOpen(false)}>
-              <button className="oval px-12 py-8 text-lg font-bold tracking-widest text-maroon border-maroon border-[0.5px]">
-                BOOK NOW
-              </button>
-            </Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
+    
+    {/* Mobile Menu Overlay - Moved outside nav to avoid clipping/z-index issues */}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="fixed inset-0 bg-cream z-[100] flex flex-col items-center justify-center gap-12 min-h-[100dvh] w-full"
+        >
+          <button 
+            className="absolute top-10 right-8 text-maroon p-4" 
+            onClick={() => setIsOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={40} />
+          </button>
+          
+          <div className="flex flex-col items-center gap-8 md:gap-12 w-full">
+            {navLinks.map((link, idx) => (
+              <motion.div
+                key={link.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 + idx * 0.1 }}
+              >
+                <Link 
+                  to={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-5xl md:text-7xl uppercase tracking-widest font-serif font-black text-maroon hover:opacity-50 transition-opacity"
+                >
+                  {link.name}
+                </Link>
+              </motion.div>
+            ))}
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mt-8"
+            >
+              <Link to="/contact" onClick={() => setIsOpen(false)}>
+                <button className="oval px-16 py-10 text-xl font-bold tracking-widest text-maroon border-maroon border-[0.5px] hover:bg-maroon hover:text-cream transition-all duration-500">
+                  BOOK NOW
+                </button>
+              </Link>
+            </motion.div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   );
 };
 
